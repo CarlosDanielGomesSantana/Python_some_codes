@@ -1,0 +1,41 @@
+import math
+import random
+
+
+def finding_prime(number):
+    num = abs(number)
+    if num < 4:
+        return True
+    for x in range(2, num):
+        if num % x == 0:
+            return False
+    return True
+
+
+def finding_prime_sqrt(number):
+    num = abs(number)
+    if num < 4:
+        return True
+    for x in range(2, int(math.sqrt(num)) + 1):
+        if number % x == 0:
+            return False
+    return True
+
+
+def finding_prime_fermat(number):
+    if number <= 102:
+        for a in range(2, number):
+            if pow(a, number - 1, number) != 1:
+                return False
+        return True
+    else:
+        for i in range(100):
+            a = random.randint(2, number - 1)
+            if pow(a, number - 1, number) != 1:
+                return False
+        return True
+
+
+print(finding_prime(107))
+print(finding_prime_sqrt(107))
+print(finding_prime_fermat(107))
